@@ -2,13 +2,7 @@ let {Client} = require('pg');
 
 let settings = require('./config');
 
-let client = new Client({
-    user: settings.username,
-    host: settings.address,
-    database: settings.dbname,
-    password: settings.pw,
-    port: settings.port,
-    });
+let client = new Client(process.env.S3_KEY);
   
 client.connect().then(
     () => console.log("Successfully connected to db"),
