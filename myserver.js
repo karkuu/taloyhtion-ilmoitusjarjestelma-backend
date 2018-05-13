@@ -144,5 +144,11 @@ app.use("/api", tijRouter);
 
 app.use("/apim", tijRouterManager);
 
+app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+  });
+
 app.listen(process.env.PORT || 3001);
 console.log("Running on port "+process.env.PORT);
