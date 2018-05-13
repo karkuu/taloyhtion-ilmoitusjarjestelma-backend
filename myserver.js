@@ -145,7 +145,7 @@ app.use("/api", tijRouter);
 app.use("/apim", tijRouterManager);
 
 app.all('/*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://taloyhtion-ilmoitusjarjestelma.herokuapp.com/");
+    res.header("Access-Control-Allow-Origin", "https://taloyhtion-ilmoitusjarjestelma.herokuapp.com");
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,mode");
     res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
     next();
