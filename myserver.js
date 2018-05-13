@@ -43,6 +43,16 @@ function getDateTime() {
 
 }
 
+app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://taloyhtion-ilmoitusjarjestelma.herokuapp.com");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,mode");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+    next();
+  });
+
+
+
+
 app.post("/login", function(req,res){
 
     let email = req.body.uname; // !!!!!!!!!!!!!!!!! Syötteen puhdistus puuttuu
@@ -144,12 +154,6 @@ app.use("/api", tijRouter);
 
 app.use("/apim", tijRouterManager);
 
-app.all('/*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://taloyhtion-ilmoitusjarjestelma.herokuapp.com");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,mode");
-    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
-    next();
-  });
 
 app.listen(process.env.PORT || 3001);
 console.log("Running on port "+process.env.PORT);
